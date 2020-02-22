@@ -16,9 +16,6 @@
    "outputs": [],
    "source": [
     "def game_core_v2(number):\n",
-    "    '''Сначала устанавливаем любое random число, а потом уменьшаем или увеличиваем его\n",
-    "       в зависимости от того, больше оно или меньше нужного.\n",
-    "       Функция принимает загаданное число и возвращает число попыток'''\n",
     "    count = 0\n",
     "    maxx = 100\n",
     "    minn = 0 \n",
@@ -42,14 +39,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": 28,
    "metadata": {},
    "outputs": [],
    "source": [
     "def score_game(game_core_v1):\n",
     "    '''Запускаем игру 1000 раз, чтоб узнать как быстро игра угадывает число'''\n",
     "    count_ls = []\n",
-    "    np.random.seed(200)  # фиксируем RANDOM SEED, чтобы ваш эксперимент был воспроизводим!\n",
+    "    np.random.seed(2)  # фиксируем RANDOM SEED, чтобы ваш эксперимент был воспроизводим!\n",
     "    random_array = np.random.randint(1, 101, size=(1000))\n",
     "    for number in random_array:\n",
     "        count_ls.append(game_core_v1(number))\n",
@@ -60,7 +57,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 29,
    "metadata": {},
    "outputs": [
     {
@@ -76,7 +73,7 @@
        "5"
       ]
      },
-     "execution_count": 13,
+     "execution_count": 29,
      "metadata": {},
      "output_type": "execute_result"
     }
