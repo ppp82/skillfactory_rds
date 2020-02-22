@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -11,7 +11,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -20,27 +20,36 @@
     "       в зависимости от того, больше оно или меньше нужного.\n",
     "       Функция принимает загаданное число и возвращает число попыток'''\n",
     "    count = 0\n",
-    "    predict = 50#np.random.randint(1,100)\n",
+    "    maxx = 100\n",
+    "    minn = 0 \n",
+    "    predict = int((maxx - minn) // 2) #np.random.randint(1,100)\n",
     "    while number != predict:\n",
-    "        count+=1\n",
+    "        count += 1\n",
     "        if number > predict: \n",
-    "            \n",
-    "            predict += 1\n",
+    "            minn = predict + 1\n",
+    "            add = int((maxx - minn) // 2)\n",
+    "            if add == 0:\n",
+    "                add = 1\n",
+    "            predict = predict + add\n",
     "        elif number < predict: \n",
-    "            predict -= 1\n",
+    "            maxx = predict - 1\n",
+    "            add = int((maxx - minn) // 2)\n",
+    "            if add == 0:\n",
+    "                add = 1\n",
+    "            predict = predict - add\n",
     "    return(count) # выход из цикла, если угадали"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [],
    "source": [
     "def score_game(game_core_v1):\n",
     "    '''Запускаем игру 1000 раз, чтоб узнать как быстро игра угадывает число'''\n",
     "    count_ls = []\n",
-    "    np.random.seed(1)  # фиксируем RANDOM SEED, чтобы ваш эксперимент был воспроизводим!\n",
+    "    np.random.seed(200)  # фиксируем RANDOM SEED, чтобы ваш эксперимент был воспроизводим!\n",
     "    random_array = np.random.randint(1, 101, size=(1000))\n",
     "    for number in random_array:\n",
     "        count_ls.append(game_core_v1(number))\n",
@@ -51,23 +60,23 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Ваш алгоритм угадывает число в среднем за 30 попыток\n"
+      "Ваш алгоритм угадывает число в среднем за 5 попыток\n"
      ]
     },
     {
      "data": {
       "text/plain": [
-       "30"
+       "5"
       ]
      },
-     "execution_count": 9,
+     "execution_count": 13,
      "metadata": {},
      "output_type": "execute_result"
     }
