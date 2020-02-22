@@ -23,11 +23,11 @@
     "    predict = minn + middle\n",
     "    while number != predict:\n",
     "        count += 1\n",
-    "        if number > predict: #'Если число больше, то смещаем минимум и берем новое число из середины диапазона'\n",
+    "        if number > predict: #'Если число больше, то смещаем минимум\n",
     "            minn = predict + 1\n",
-    "        elif number < predict: #'Если число меньше, то смещаем максимум и берем новое число из середины диапазона'\n",
+    "        elif number < predict: #'Если число меньше, то смещаем максимум\n",
     "            maxx = predict - 1          \n",
-    "        middle = (maxx - minn) // 2\n",
+    "        middle = (maxx - minn) // 2 # и берем новое число из середины диапазона'\n",
     "        predict = minn + middle\n",
     "    return(count) # выход из цикла, если угадали"
    ]
