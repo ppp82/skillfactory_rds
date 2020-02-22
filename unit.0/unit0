@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -11,35 +11,30 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 22,
    "metadata": {},
    "outputs": [],
    "source": [
     "def game_core_v2(number):\n",
-    "    count = 0\n",
-    "    maxx = 100\n",
-    "    minn = 0 \n",
-    "    predict = int((maxx - minn) // 2) #np.random.randint(1,100)\n",
+    "    count = 1\n",
+    "    maxx = 100 #'Текущие максимальное значение'\n",
+    "    minn = 0 #'Текущие минимальное значение'\n",
+    "    middle = int((maxx - minn) // 2) #'Первое значение берем из середины диапазона'\n",
+    "    predict = minn + middle\n",
     "    while number != predict:\n",
     "        count += 1\n",
-    "        if number > predict: \n",
+    "        if number > predict: #'Если число больше, то смещаем минимум и берем новое число из середины диапазона'\n",
     "            minn = predict + 1\n",
-    "            add = int((maxx - minn) // 2)\n",
-    "            if add == 0:\n",
-    "                add = 1\n",
-    "            predict = predict + add\n",
-    "        elif number < predict: \n",
-    "            maxx = predict - 1\n",
-    "            add = int((maxx - minn) // 2)\n",
-    "            if add == 0:\n",
-    "                add = 1\n",
-    "            predict = predict - add\n",
+    "        elif number < predict: #'Если число меньше, то смещаем максимум и берем новое число из середины диапазона'\n",
+    "            maxx = predict - 1          \n",
+    "        middle = (maxx - minn) // 2\n",
+    "        predict = minn + middle\n",
     "    return(count) # выход из цикла, если угадали"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
+   "execution_count": 23,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -57,7 +52,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 29,
+   "execution_count": 24,
    "metadata": {},
    "outputs": [
     {
@@ -73,7 +68,7 @@
        "5"
       ]
      },
-     "execution_count": 29,
+     "execution_count": 24,
      "metadata": {},
      "output_type": "execute_result"
     }
